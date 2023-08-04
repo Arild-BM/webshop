@@ -51,9 +51,9 @@ function App() {
       <header className="app-header">
         <h4 className = "pointer" onClick={() => setActivePage('categories')}>FakeStore WebShop</h4>
         <h4 className = "pointer" onClick={() => setActivePage('contactInfo')}>Contact info</h4>
-        <div className = {boughtItems.length > 0 ? "pointer shopping-basket" : "shopping-basket"} >
+        <div className = {boughtItems?.length > 0 ? "pointer shopping-basket" : "shopping-basket"} >
           <img src = {basket} alt = "shopping basket" />
-          {boughtItems.length > 0 ?
+          {boughtItems?.length > 0 ?
             <p className = "basket-content"
               onClick={() => setActivePage('shoppingBasket')}
               >{boughtItems.length}
