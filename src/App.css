@@ -1,38 +1,203 @@
 .App {
+  position: relative;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.shopping-basket {
+  width: 25px;
+  position: relative;
+  display: flex;
+}
+
+.basket-content {
+  position: absolute;
+  top: 15px;
+  right: -6px;
+  background-color: red;
+  width: 13px;
+  height: 13px;
   text-align: center;
+  line-height: 13px;
+  border-radius: 10px;
+  color: white;
+  font-size: x-small;
+  padding: 2px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.deleteItem {
+  background-color: red;
+  width: 12px;
+  height: 12px;
+  text-align: center;
+  line-height: 8px;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  align-self: center;
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+p {
+  margin: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+img {
+  width: 35px;
+}
+
+.categoryPage {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin: 0 20px;
+}
+
+.category {
+  width: 150px;
+  height: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  cursor: pointer;
+  border: 1px black solid;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.categoryMain {
+  height: 110px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.pointer {
+  cursor: pointer;
+}
+
+.category:hover, .deleteItem:hover, .pointer:hover {
+  scale: 1.1;
+}
+
+.button {
+  margin: 0 auto;
+  font-weight: bold;
+  background-color: yellow;
+  height: 45px;
+  padding: 0 20px;
+  text-align: center;
+  line-height: 45px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.button:active {
+  border: 1px black solid;
+}
+
+.buttonLength {
+  width: 100px;
+  margin-top: 40px;
+}
+
+.buttonLength2 {
+  width: 100px;
+  margin: 10px;
+}
+
+.buttonLength3 {
+  width: 200px;
+}
+
+.button-line {
+  display: flex;
+  margin-top: 20px;
+}
+
+.imageMedium {
+  width: 50px;
+}
+
+.imageLarge {
+  width: 200px;
+  border: 1px black solid;
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.item-page {
+  display: flex;
+  gap: 20px;
+  margin: 0 30px;
+  align-items: center;
+}
+
+.description {
+  margin: 10px 30px;
+}
+
+.basketLine {
+  display: flex;
+  margin: 0 20px;
+  justify-content: left;
+  gap: 20px;
+}
+
+.itemPicture {
+  height: 16px;
+  width: 16px;
+}
+
+.itemName {
+  width: 60%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shortName {
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.totalName {
+  width: calc(16px + 20px + 60%);
+}
+
+.itemPrice {
+  width: 15%;
+  text-align: end;
+}
+
+.total, .heading {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.contactInfo {
+  width: 300px;
+  text-transform: none;
+  margin: 0 auto;
+}
+
+.inactive {
+  cursor: not-allowed;
+  color: grey;
+}
+
+.activeImage {
+  display: flex;
+  max-height: 60vh;
+  width: unset;
+  margin: 10px auto;
 }
