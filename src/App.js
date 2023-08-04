@@ -14,7 +14,7 @@ function App() {
   const [activePage, setActivePage] = useState("categories")
   const [activeImage, setActiveImage] = useState("")
   const [prevPage, setPrevPage] = useState("")
-  const [boughtItems, setBoughtItems] = useState(JSON.parse(localStorage.getItem("fakeStoreBasket")))
+  const [boughtItems, setBoughtItems] = useState("fakeStoreBasket" in localStorage ? JSON.parse(localStorage.getItem("fakeStoreBasket")) : [])
 
   useEffect(() => {
     async function getCategories() {
@@ -51,9 +51,9 @@ function App() {
       <header className="app-header">
         <h4 className = "pointer" onClick={() => setActivePage('categories')}>FakeStore WebShop</h4>
         <h4 className = "pointer" onClick={() => setActivePage('contactInfo')}>Contact info</h4>
-        <div className = {boughtItems?.length > 0 ? "pointer shopping-basket" : "shopping-basket"} >
+        <div className = {boughtItems.length > 0 ? "pointer shopping-basket" : "shopping-basket"} >
           <img src = {basket} alt = "shopping basket" />
-          {boughtItems?.length > 0 ?
+          {boughtItems.length > 0 ?
             <p className = "basket-content"
               onClick={() => setActivePage('shoppingBasket')}
               >{boughtItems.length}
