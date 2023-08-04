@@ -22,15 +22,25 @@ function App() {
         const fetchData1 = await fetch('https://fakestoreapi.com/products/categories')
         const dataArray1 = await fetchData1.json()
         setCategories([...dataArray1])
-        dataArray1.forEach(async (element, index) => {
-          const fetchData2 = await fetch(`https://fakestoreapi.com/products/category/${element}`)
+        // dataArray1.forEach(async (element, index) => {
+        //   const fetchData2 = await fetch(`https://fakestoreapi.com/products/category/${element}`)
+        //   const dataArray2 = await fetchData2.json()
+        //   setCategoryPictures(oldArray => [
+        //     ...oldArray.slice(0, index),
+        //     dataArray2[0].image,
+        //     ...oldArray.slice(index+1)
+        //   ])
+        // })
+        for (let index = 0 ; index < dataArray1.length ; index++) {
+          const fetchData2 = await fetch(`https://fakestoreapi.com/products/category/${dataArray1[index]}`)
           const dataArray2 = await fetchData2.json()
           setCategoryPictures(oldArray => [
-            ...oldArray.slice(0, index), 
-            dataArray2[0].image, 
+            ...oldArray.slice(0, index),
+            dataArray2[0].image,
             ...oldArray.slice(index+1)
           ])
-        })
+        }
+
       } catch(err) {
         console.log(err)
         setCategories(["No connection to webshop"])
