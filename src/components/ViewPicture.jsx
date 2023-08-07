@@ -1,3 +1,4 @@
+// Page to view a large picture of an item
 function ViewPicture({activeImage, setActivePage, prevPage}) {
   
     return (

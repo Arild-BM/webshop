@@ -1,3 +1,4 @@
+// Show page for shopping basket with total sum and let you delete items
 function ShoppingBasket({boughtItems, setBoughtItems, setActivePage}) {
   
     return (

@@ -1,3 +1,4 @@
+// Page for contact information
 function ContactInfo({setActivePage}) {
   
     return (

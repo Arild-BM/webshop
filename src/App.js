@@ -16,6 +16,7 @@ function App() {
   const [prevPage, setPrevPage] = useState("")
   const [boughtItems, setBoughtItems] = useState("fakeStoreBasket" in localStorage ? JSON.parse(localStorage.getItem("fakeStoreBasket")) : [])
 
+  // Get categories and categorypictures from API
   useEffect(() => {
     async function getCategories() {
       try {
@@ -31,7 +32,6 @@ function App() {
             ...oldArray.slice(index+1)
           ])
         }
-
       } catch(err) {
         console.log(err)
         setCategories(["No connection to webshop"])
@@ -42,6 +42,7 @@ function App() {
     }, []
   )
 
+  // Store shopping basket in local storage after every change
   useEffect(() => {
     localStorage.setItem("fakeStoreBasket", JSON.stringify(boughtItems)) 
     }, [boughtItems]
@@ -49,6 +50,7 @@ function App() {
 
   return (
     <div className="App">
+      {/* Header */}
       <header className="app-header">
         <h4 className = "pointer" onClick={() => setActivePage('categories')}>FakeStore WebShop</h4>
         <h4 className = "pointer" onClick={() => setActivePage('contactInfo')}>Contact info</h4>
@@ -66,6 +68,7 @@ function App() {
           }
         </div>
       </header>
+      {/* Active page */}
       <main>
         {activePage === "categories" ? <ShowCategories 
           categories = {categories}

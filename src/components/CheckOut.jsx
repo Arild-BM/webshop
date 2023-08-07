@@ -1,3 +1,4 @@
+// Show total cost for bought items and transportations and let you "pay"
 function CheckOut({boughtItems, setBoughtItems, setActivePage}) {
   
     return (

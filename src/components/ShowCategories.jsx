@@ -1,3 +1,4 @@
+// Show all (4) categories in the webshop and let you choose category
 function ShowCategories({categories, categoryPictures, setActivePage}) {
   
     return (

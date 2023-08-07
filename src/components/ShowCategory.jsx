@@ -1,3 +1,4 @@
+// Let you see a spesific category and choose a spesific item
 import { useState, useEffect } from "react"
 
 function ShowCategory({setCategories, activePage, setActivePage,
@@ -20,6 +21,8 @@ function ShowCategory({setCategories, activePage, setActivePage,
       }, []
     )
 
+    // Let you see a spesific item and include the item in the shopping basket
+    // You can also click on the image and see a lager version of the image
     function ItemPage({id}) {
       const index = categoryContent.findIndex(item => item.id === id)
   
@@ -56,6 +59,7 @@ function ShowCategory({setCategories, activePage, setActivePage,
       )
     }
   
+    // Let you see a spesific category and select items in the category
     function CategoryPage() {
   
       return (
@@ -81,7 +85,7 @@ function ShowCategory({setCategories, activePage, setActivePage,
       )
     }
   
-  
+    // Here the categorypage or the itempage will be selected
     return (
       <div>
         {typeof(activePage) === 'number' ? <ItemPage id = {activePage}/> : <CategoryPage /> }
