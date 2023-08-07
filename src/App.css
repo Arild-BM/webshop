@@ -125,6 +125,7 @@ img {
 .button-line {
   display: flex;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /* Image size on main page and spesific category page */
@@ -220,4 +221,23 @@ img {
   max-height: 60vh;
   width: unset;
   margin: 10px auto;
+}
+
+/* Changes for small screen */
+@media (max-width: 500px) {
+  .button-line {
+    flex-direction: column;
+  }   
+
+  .button {
+    margin-top:10px;
+  }
+
+  .item-page {
+    flex-direction: column;
+  }
+
+  .buttonLength2 {
+    margin: 20px auto;
+  }
 }
