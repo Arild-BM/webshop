@@ -4,8 +4,8 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   max-width: 800px;
-  caret-color: transparent;
-  user-select: none;
+  caret-color: transparent;   /* Get rid of blinking cursor some places */
+  user-select: none;          /* Deny user to select text */
 }
 
 code {
@@ -13,6 +13,7 @@ code {
     monospace;
 }
 
+/* This is for background picture - at the moment disabled */
 body:before {    
   /* content: ""; */
   background-image: url("../public/background.jpg");

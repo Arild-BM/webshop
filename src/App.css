@@ -1,5 +1,5 @@
 .App {
-  position: relative;
+  position: relative;     /* Needed if packground picture is active */
 }
 
 .app-header {
@@ -14,6 +14,7 @@
   display: flex;
 }
 
+/* Red circle with number of items in basket */
 .basket-content {
   position: absolute;
   top: 15px;
@@ -29,6 +30,7 @@
   padding: 2px;
 }
 
+/* Red circle with a "-" to remove items from basket*/
 .deleteItem {
   background-color: red;
   width: 12px;
@@ -50,6 +52,7 @@ img {
   width: 35px;
 }
 
+/* Main window for catagories and a spesific category */
 .categoryPage {
   display: flex;
   flex-wrap: wrap;
@@ -58,6 +61,7 @@ img {
   margin: 0 20px;
 }
 
+/* Element in window for catagories and a spesific category */
 .category {
   width: 150px;
   height: 150px;
@@ -72,6 +76,7 @@ img {
   border-radius: 10px;
 }
 
+/* Let the main page have lower hight than the spesific category page */
 .categoryMain {
   height: 110px;
 }
@@ -100,16 +105,19 @@ img {
   border: 1px black solid;
 }
 
+/* Length and margin for many buttons */
 .buttonLength {
   width: 100px;
   margin-top: 40px;
 }
 
+/* Buy-button in the item page */
 .buttonLength2 {
   width: 100px;
   margin: 10px;
 }
 
+/* "Back to"-button in the picture page */
 .buttonLength3 {
   width: 200px;
 }
@@ -119,10 +127,12 @@ img {
   margin-top: 20px;
 }
 
+/* Image size on main page and spesific category page */
 .imageMedium {
   width: 50px;
 }
 
+/* Image size on item page */
 .imageLarge {
   width: 200px;
   border: 1px black solid;
@@ -139,10 +149,12 @@ img {
   align-items: center;
 }
 
+/* Description on item page */
 .description {
   margin: 10px 30px;
 }
 
+/* Each line in shopping basket */
 .basketLine {
   display: flex;
   margin: 0 20px;
@@ -150,11 +162,13 @@ img {
   gap: 20px;
 }
 
+/* Small item picture in shopping basket */
 .itemPicture {
   height: 16px;
   width: 16px;
 }
 
+/* Name of item in shopping basket */
 .itemName {
   width: 60%;
   white-space: nowrap;
@@ -162,6 +176,7 @@ img {
   text-overflow: ellipsis;
 }
 
+/* Name of item on only one line in spesific category page */
 .shortName {
   width: 150px;
   white-space: nowrap;
@@ -169,14 +184,17 @@ img {
   text-overflow: ellipsis;
 }
 
+/* Line with total sum in shopping basket */
 .totalName {
   width: calc(16px + 20px + 60%);
 }
 
+/* Item price in checkout and shopping basket pages */
 .itemPrice {
   width: 15%;
   text-align: end;
 }
+
 
 .total, .heading {
   margin-top: 10px;
@@ -190,11 +208,13 @@ img {
   margin: 0 auto;
 }
 
+/* Inactive buttons - Checkout if you delete everything in shopping basket */
 .inactive {
   cursor: not-allowed;
   color: grey;
 }
 
+/* Image size on image page */
 .activeImage {
   display: flex;
   max-height: 60vh;
