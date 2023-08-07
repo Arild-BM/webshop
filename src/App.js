@@ -53,7 +53,10 @@ function App() {
         <h4 className = "pointer" onClick={() => setActivePage('categories')}>FakeStore WebShop</h4>
         <h4 className = "pointer" onClick={() => setActivePage('contactInfo')}>Contact info</h4>
         <div className = {boughtItems.length > 0 ? "pointer shopping-basket" : "shopping-basket"} >
-          <img src = {basket} alt = "shopping basket" />
+          <img src = {basket}
+            alt = "shopping basket"
+            onClick={boughtItems.length > 0 ? () => setActivePage('shoppingBasket') : null}
+          />
           {boughtItems.length > 0 ?
             <p className = "basket-content"
               onClick={() => setActivePage('shoppingBasket')}
