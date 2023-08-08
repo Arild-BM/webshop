@@ -3,6 +3,7 @@
 }
 
 .app-header {
+  font-family: 'Tektur', cursive;
   display: flex;
   justify-content: space-around;
   margin-bottom: 20px;
@@ -90,6 +91,7 @@ img {
 }
 
 .button {
+  font-family: 'Tektur', cursive;
   margin: 0 auto;
   font-weight: bold;
   background-color: yellow;
