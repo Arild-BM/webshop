@@ -215,6 +215,11 @@ img {
 .inactive {
   cursor: not-allowed;
   color: grey;
+  border: none;
+}
+
+.inactive:active {
+  border: none;
 }
 
 /* Image size on image page */
