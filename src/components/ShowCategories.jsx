@@ -10,7 +10,7 @@ function ShowCategories({categories, categoryPictures, setActivePage}) {
             onClick={() => setActivePage(item)}
           >
             <img className = "imageMedium" src={categoryPictures[index]} alt="" />
-            <p>{item}</p>
+            <p className = "capitalized" >{item}</p>
           </div>
           )
         )}

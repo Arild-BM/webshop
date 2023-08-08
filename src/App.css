@@ -77,6 +77,10 @@ img {
   border-radius: 10px;
 }
 
+.capitalized {
+  text-transform: capitalize;
+}
+
 /* Let the main page have lower hight than the spesific category page */
 .categoryMain {
   height: 110px;
