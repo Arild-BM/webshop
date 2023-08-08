@@ -8,11 +8,6 @@ body {
   user-select: none;          /* Deny user to select text */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 /* This is for background picture - at the moment disabled */
 body:before {    
   /* content: ""; */
