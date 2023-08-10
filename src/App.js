@@ -1,19 +1,25 @@
 import { useState, useEffect } from 'react'
 import './App.css';
 import basket from "./pictures/basket.svg"
-import ShowCategories from './components/ShowCategories';
-import ShowCategory from "./components/ShowCategory"
-import ShoppingBasket from "./components/ShoppingBasket"
-import ContactInfo from "./components/ContactInfo"
-import CheckOut from "./components/CheckOut"
-import ViewPicture from "./components/ViewPicture"
+import ShowCategories from './routes/ShowCategories';
+import ShowCategory from "./routes/ShowCategory"
+import ProductPage from "./routes/ProductPage"
+import ShoppingBasket from "./routes/ShoppingBasket"
+import ContactInfo from "./routes/ContactInfo"
+import CheckOut from "./routes/CheckOut"
+import ViewPicture from "./routes/ViewPicture"
+
+import {
+	BrowserRouter as Router,
+	Routes,
+	Route,
+	Link
+} from "react-router-dom"
 
 function App() {
   const [categories, setCategories] = useState(["Collecting data"])
   const [categoryPictures, setCategoryPictures] = useState([])
-  const [activePage, setActivePage] = useState("categories")
-  const [activeImage, setActiveImage] = useState("")
-  const [prevPage, setPrevPage] = useState("")
+  const [products, setProducts] = useState([])
   const [boughtItems, setBoughtItems] = useState("fakeStoreBasket" in localStorage ? JSON.parse(localStorage.getItem("fakeStoreBasket")) : [])
 
   // Get categories and categorypictures from API
@@ -42,6 +48,23 @@ function App() {
     }, []
   )
 
+// Get all products from API
+useEffect(() => {
+  async function getAllProducts() {
+    try {
+      const fetchData = await fetch('https://fakestoreapi.com/products')
+      const dataArray = await fetchData.json()
+      setProducts([...dataArray])
+    } catch(err) {
+      console.log(err)
+      setProducts(["No connection to webshop"])
+    }
+  }
+  getAllProducts()
+  // eslint-disable-next-line
+  }, []
+)
+
   // Store shopping basket in local storage after every change
   useEffect(() => {
     localStorage.setItem("fakeStoreBasket", JSON.stringify(boughtItems)) 
@@ -49,59 +72,64 @@ function App() {
   )
 
   return (
-    <div className="App">
-      {/* Header */}
-      <header className="app-header">
-        <h4 className = "pointer" onClick={() => setActivePage('categories')}>FakeStore WebShop</h4>
-        <h4 className = "pointer" onClick={() => setActivePage('contactInfo')}>Contact info</h4>
-        <div className = {boughtItems.length > 0 ? "pointer shopping-basket" : "shopping-basket"} >
-          <img src = {basket}
-            alt = "shopping basket"
-            onClick={boughtItems.length > 0 ? () => setActivePage('shoppingBasket') : null}
-          />
-          {boughtItems.length > 0 ?
-            <p className = "basket-content"
-              onClick={() => setActivePage('shoppingBasket')}
+    <Router>
+      <div className="App">
+        {/* Header */}
+        <header className="app-header">
+          <Link to="/"><h4>FakeStore WebShop</h4></Link>
+          <Link to="/contactinfo"><h4>Contact info</h4></Link>
+          <Link className = {boughtItems.length > 0 ? "shopping-basket" : "inactive-pointer shopping-basket"} to="/shoppingbasket">
+            <img src = {basket}
+              alt = "shopping basket"
+            />
+            {boughtItems.length > 0 ?
+              <p className = "basket-content"
               >{boughtItems.length}
-            </p> 
-            : null
-          }
-        </div>
-      </header>
-      {/* Active page */}
-      <main>
-        {activePage === "categories" ? <ShowCategories 
-          categories = {categories}
-          categoryPictures = {categoryPictures}
-          setActivePage = {setActivePage}
-        /> : 
-        activePage === "shoppingBasket" ? <ShoppingBasket 
-          boughtItems = {boughtItems}
-          setBoughtItems = {setBoughtItems}
-          setActivePage = {setActivePage}
-        /> : 
-        activePage === "contactInfo" ? <ContactInfo 
-        setActivePage = {setActivePage}
-        /> : 
-        activePage === "viewPicture" ? <ViewPicture
-        activeImage = {activeImage}
-        setActivePage = {setActivePage}
-        prevPage = {prevPage}
-        /> : 
-        activePage === "checkOut" ? <CheckOut 
-          boughtItems = {boughtItems}
-          setBoughtItems = {setBoughtItems}  
-          setActivePage = {setActivePage}
-        /> : <ShowCategory
-          setCategories = {setCategories}
-          activePage = {activePage}  
-          setActivePage = {setActivePage}
-          setBoughtItems = {setBoughtItems}
-          setActiveImage = {setActiveImage}
-          setPrevPage = {setPrevPage}
-        /> }
-      </main>
-    </div>
+              </p> 
+              : null
+            }
+          </Link>
+        </header>
+        {/* Active page */}
+        <main>
+          <Routes>
+            <Route path="/" 
+              element = {<ShowCategories
+                categories = {categories}
+                categoryPictures = {categoryPictures}
+              />}
+            />
+            <Route path="/shoppingbasket"
+              element = {<ShoppingBasket
+                boughtItems = {boughtItems}
+                setBoughtItems = {setBoughtItems}
+              />}
+            />
+            <Route path="/contactinfo" element={<ContactInfo />} />
+            <Route path="/checkout"
+              element={<CheckOut
+                boughtItems = {boughtItems}
+                setBoughtItems = {setBoughtItems}
+              />}
+            />
+            <Route path="/category/:categoryID"
+              element={<ShowCategory />}
+            />
+            <Route path="/products/:id"
+              element={<ProductPage
+                products = {products}
+                setBoughtItems = {setBoughtItems}
+              />}
+            />
+            <Route path="/products/:id/image"
+              element={<ViewPicture
+                products = {products}
+              />}
+            />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 
