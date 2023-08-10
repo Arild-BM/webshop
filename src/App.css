@@ -37,7 +37,7 @@
   width: 12px;
   height: 12px;
   text-align: center;
-  line-height: 8px;
+  line-height: 12px;
   border-radius: 50%;
   color: white;
   font-weight: bold;
@@ -49,9 +49,21 @@ p {
   margin: 0;
 }
 
+h4 {
+  color: black;
+}
+
 img {
   width: 35px;
 }
+
+a, a:focus, a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+  outline: none;
+}
+
+/* &:focus, &:hover, &:visited, &:link, &:active {
+  text-decoration: none; */
 
 /* Main window for catagories and a spesific category */
 .categoryPage {
@@ -77,8 +89,10 @@ img {
   border-radius: 10px;
 }
 
-.capitalized {
+/* Text main menu */
+.text-main-menu {
   text-transform: capitalize;
+  color: black;
 }
 
 /* Let the main page have lower hight than the spesific category page */
@@ -90,8 +104,13 @@ img {
   cursor: pointer;
 }
 
-.category:hover, .deleteItem:hover, .pointer:hover {
+.category:hover, .deleteItem:hover, a:hover, a:focus {
   scale: 1.1;
+}
+
+.inactive-pointer:hover {
+  scale: unset;
+  cursor: not-allowed;
 }
 
 .button {
@@ -99,6 +118,7 @@ img {
   margin: 0 auto;
   font-weight: bold;
   background-color: yellow;
+  color: black;
   height: 45px;
   padding: 0 20px;
   text-align: center;
@@ -217,13 +237,14 @@ img {
 
 /* Inactive buttons - Checkout if you delete everything in shopping basket */
 .inactive {
-  cursor: not-allowed;
   color: grey;
   border: none;
+  cursor: not-allowed;
 }
 
-.inactive:active {
+.inactive:hover, .inactive:focus, .inactive:active {
   border: none;
+  scale: unset;
 }
 
 /* Image size on image page */

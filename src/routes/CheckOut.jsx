@@ -1,5 +1,8 @@
 // Show total cost for bought items and transportations and let you "pay"
-function CheckOut({boughtItems, setBoughtItems, setActivePage}) {
+
+import { Link } from "react-router-dom"
+
+function CheckOut({boughtItems, setBoughtItems}) {
   
     return (
       <div>
@@ -18,12 +21,8 @@ function CheckOut({boughtItems, setBoughtItems, setActivePage}) {
             <p className = "itemPrice">{boughtItems.reduce(((total, item) => total + item.price), 50).toFixed(2)}</p>
         </div>
         <div className = "button-line">
-            <p className = "buttonLength button" onClick={() => setActivePage('categories')}>Buy more!</p>
-            <p className = "buttonLength button" 
-                onClick={() => {
-                    setBoughtItems([])
-                    setActivePage('categories')}}
-            >Pay</p>
+            <Link to="/" className = "buttonLength button">Buy more!</Link>
+            <Link to="/" className = "buttonLength button" onClick={() => setBoughtItems([])} >Pay</Link>
         </div>
       </div>
     )

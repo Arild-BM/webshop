@@ -1,5 +1,8 @@
 // Show page for shopping basket with total sum and let you delete items
-function ShoppingBasket({boughtItems, setBoughtItems, setActivePage}) {
+
+import { Link } from "react-router-dom"
+
+function ShoppingBasket({boughtItems, setBoughtItems}) {
   
     return (
       <div>
@@ -18,10 +21,11 @@ function ShoppingBasket({boughtItems, setBoughtItems, setActivePage}) {
             <p className = "itemPrice">{boughtItems.reduce(((total, item) => total + item.price), 0).toFixed(2)}</p>
         </div>
         <div className = "button-line">
-            <p className = "buttonLength button" onClick={() => setActivePage('categories')}>Buy more!</p>
-            <p className = {boughtItems.length > 0 ? "buttonLength button" : "buttonLength button inactive" }
-                onClick={boughtItems.length > 0 ? () => setActivePage('checkOut') : null}>Check out!
-            </p>
+          <Link to="/" className = "buttonLength button">Buy more!</Link>
+          {boughtItems.length > 0 ?
+            <Link to="/checkout" className = "buttonLength button">Check Out!</Link>
+            : <p className = "buttonLength button inactive" >Check out!</p>
+          }
         </div>
       </div>
     )
