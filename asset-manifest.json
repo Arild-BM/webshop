@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/webshop/static/css/main.3dcf4c20.css",
-    "main.js": "/webshop/static/js/main.55f77c7d.js",
+    "main.css": "/webshop/static/css/main.7e9d823e.css",
+    "main.js": "/webshop/static/js/main.7d94c5f7.js",
     "static/js/787.5227fab7.chunk.js": "/webshop/static/js/787.5227fab7.chunk.js",
     "static/media/background.jpg": "/webshop/static/media/background.4a4f22311825ade6a927.jpg",
     "static/media/basket.svg": "/webshop/static/media/basket.86bd65758b0199a6e602414ea3a4851f.svg",
     "index.html": "/webshop/index.html",
-    "main.3dcf4c20.css.map": "/webshop/static/css/main.3dcf4c20.css.map",
-    "main.55f77c7d.js.map": "/webshop/static/js/main.55f77c7d.js.map",
+    "main.7e9d823e.css.map": "/webshop/static/css/main.7e9d823e.css.map",
+    "main.7d94c5f7.js.map": "/webshop/static/js/main.7d94c5f7.js.map",
     "787.5227fab7.chunk.js.map": "/webshop/static/js/787.5227fab7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3dcf4c20.css",
-    "static/js/main.55f77c7d.js"
+    "static/css/main.7e9d823e.css",
+    "static/js/main.7d94c5f7.js"
   ]
 }
