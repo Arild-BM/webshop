@@ -9,6 +9,9 @@ import ContactInfo from "./routes/ContactInfo"
 import CheckOut from "./routes/CheckOut"
 import ViewPicture from "./routes/ViewPicture"
 
+// Contexts
+import MyContext from "./contexts/MyContext"
+
 import {
 	BrowserRouter as Router,
 	Routes,
@@ -17,10 +20,11 @@ import {
 } from "react-router-dom"
 
 function App() {
-  const [categories, setCategories] = useState(["Collecting data"])
-  const [categoryPictures, setCategoryPictures] = useState([])
-  const [products, setProducts] = useState([])
+  const [categories, setCategories] = useState("fakeStoreCategories" in localStorage ? JSON.parse(localStorage.getItem("fakeStoreCategories")) : ["Collecting data"])
+  const [categoryPictures, setCategoryPictures] = useState("fakeStorePictures" in localStorage ? JSON.parse(localStorage.getItem("fakeStorePictures")) : [])
+  const [products, setProducts] = useState("fakeStoreProducts" in localStorage ? JSON.parse(localStorage.getItem("fakeStoreProducts")) : [])
   const [boughtItems, setBoughtItems] = useState("fakeStoreBasket" in localStorage ? JSON.parse(localStorage.getItem("fakeStoreBasket")) : [])
+  let categoryPicturesArray = []
 
   // Get categories and categorypictures from API
   useEffect(() => {
@@ -29,6 +33,7 @@ function App() {
         const fetchData1 = await fetch('https://fakestoreapi.com/products/categories')
         const dataArray1 = await fetchData1.json()
         setCategories([...dataArray1])
+        localStorage.setItem("fakeStoreCategories", JSON.stringify(dataArray1))
         for (let index = 0 ; index < dataArray1.length ; index++) {
           const fetchData2 = await fetch(`https://fakestoreapi.com/products/category/${dataArray1[index]}`)
           const dataArray2 = await fetchData2.json()
@@ -37,7 +42,9 @@ function App() {
             dataArray2[0].image,
             ...oldArray.slice(index+1)
           ])
+          categoryPicturesArray[index] = dataArray2[0].image
         }
+        localStorage.setItem("fakeStorePictures", JSON.stringify(categoryPicturesArray))
       } catch(err) {
         console.log(err)
         setCategories(["No connection to webshop"])
@@ -55,6 +62,7 @@ useEffect(() => {
       const fetchData = await fetch('https://fakestoreapi.com/products')
       const dataArray = await fetchData.json()
       setProducts([...dataArray])
+      localStorage.setItem("fakeStoreProducts", JSON.stringify(dataArray)) 
     } catch(err) {
       console.log(err)
       setProducts(["No connection to webshop"])
@@ -72,64 +80,70 @@ useEffect(() => {
   )
 
   return (
-    <Router>
-      <div className="App">
-        {/* Header */}
-        <header className="app-header">
-          <Link to="/"><h4>FakeStore WebShop</h4></Link>
-          <Link to="/contactinfo"><h4>Contact info</h4></Link>
-          <Link className = {boughtItems.length > 0 ? "shopping-basket" : "inactive-pointer shopping-basket"} to="/shoppingbasket">
-            <img src = {basket}
-              alt = "shopping basket"
-            />
-            {boughtItems.length > 0 ?
-              <p className = "basket-content"
-              >{boughtItems.length}
-              </p> 
-              : null
-            }
-          </Link>
-        </header>
-        {/* Active page */}
-        <main>
-          <Routes>
-            <Route path="/" 
-              element = {<ShowCategories
-                categories = {categories}
-                categoryPictures = {categoryPictures}
-              />}
-            />
-            <Route path="/shoppingbasket"
-              element = {<ShoppingBasket
-                boughtItems = {boughtItems}
-                setBoughtItems = {setBoughtItems}
-              />}
-            />
-            <Route path="/contactinfo" element={<ContactInfo />} />
-            <Route path="/checkout"
-              element={<CheckOut
-                boughtItems = {boughtItems}
-                setBoughtItems = {setBoughtItems}
-              />}
-            />
-            <Route path="/category/:categoryID"
-              element={<ShowCategory />}
-            />
-            <Route path="/products/:id"
-              element={<ProductPage
-                products = {products}
-                setBoughtItems = {setBoughtItems}
-              />}
-            />
-            <Route path="/products/:id/image"
-              element={<ViewPicture
-                products = {products}
-              />}
-            />
-          </Routes>
-        </main>
-      </div>
-    </Router>
+    <MyContext.Provider value={products}>
+      <Router>
+        <div className="App">
+          {/* Header */}
+          <header className="app-header">
+            <Link to="/"><h4>FakeStore WebShop</h4></Link>
+            <Link to="/contactinfo"><h4>Contact info</h4></Link>
+            <Link className = {boughtItems.length > 0 ? "shopping-basket" : "inactive-pointer shopping-basket"} to="/shoppingbasket">
+              <img src = {basket}
+                alt = "shopping basket"
+              />
+              {boughtItems.length > 0 ?
+                <p className = "basket-content"
+                >{boughtItems.reduce(((total, item) => total + item.number), 0)}
+                </p> 
+                : null
+              }
+            </Link>
+          </header>
+          {/* Active page */}
+          <main>
+            <Routes>
+              <Route path={"/"}
+                element = {<ShowCategories
+                  categories = {categories}
+                  categoryPictures = {categoryPictures}
+                />}
+              />
+              <Route path={"/webshop"}
+                element = {<ShowCategories
+                  categories = {categories}
+                  categoryPictures = {categoryPictures}
+                />}
+              />
+              <Route path="/shoppingbasket"
+                element = {<ShoppingBasket
+                  boughtItems = {boughtItems}
+                  setBoughtItems = {setBoughtItems}
+                />}
+              />
+              <Route path="/contactinfo" element={<ContactInfo />} />
+              <Route path="/checkout"
+                element={<CheckOut
+                  boughtItems = {boughtItems}
+                  setBoughtItems = {setBoughtItems}
+                />}
+              />
+              <Route path="/category/:categoryID"
+                element={<ShowCategory />}
+              />
+              <Route path="/products/:id"
+                element={<ProductPage
+                  boughtItems = {boughtItems}
+                  setBoughtItems = {setBoughtItems}
+                />}
+              />
+              <Route path="/products/:id/image"
+                element={<ViewPicture/>}
+              />
+            </Routes>
+          </main>
+        </div>
+      </Router>
+    </MyContext.Provider>
   );
 }
 

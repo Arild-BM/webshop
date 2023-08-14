@@ -45,6 +45,31 @@
   cursor: pointer;
 }
 
+.changeNbrOfItems {
+  width: 12px;
+  height: 12px;
+  text-align: center;
+  line-height: 12px;
+  border: 1px grey solid;
+  border-radius: 50%;
+  font-weight: bold;
+  align-self: center;
+  cursor: pointer;
+}
+
+.changeNbrOfItems:hover {
+  border: 1px black solid;
+}
+
+.changeNbrOfItems:active {
+  outline-offset: 2px;
+  outline: 1px black solid;
+}
+
+.nbrOfItems {
+  width: 12px;
+}
+
 p {
   margin: 0;
 }
@@ -186,7 +211,7 @@ a, a:focus, a:hover, a:visited, a:link, a:active {
   display: flex;
   margin: 0 20px;
   justify-content: left;
-  gap: 20px;
+  gap: 15px;
 }
 
 /* Small item picture in shopping basket */
@@ -197,7 +222,7 @@ a, a:focus, a:hover, a:visited, a:link, a:active {
 
 /* Name of item in shopping basket */
 .itemName {
-  width: 60%;
+  width: 32%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -213,13 +238,15 @@ a, a:focus, a:hover, a:visited, a:link, a:active {
 
 /* Line with total sum in shopping basket */
 .totalName {
-  width: calc(16px + 20px + 60%);
+  width: calc(178px + 32%);
+  /* border: red 2px solid; */
 }
 
 /* Item price in checkout and shopping basket pages */
 .itemPrice {
-  width: 15%;
+  width: 50px;
   text-align: end;
+  /* border: red 2px solid; */
 }
 
 

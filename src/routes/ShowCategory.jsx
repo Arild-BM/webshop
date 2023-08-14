@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
 
-function ShowCategory({setActiveProduct}) {
+function ShowCategory() {
     const [categoryContent, setCategoryContent] = useState([{price: "Collecting data"}])
     const params = useParams()
   
