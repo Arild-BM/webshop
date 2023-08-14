@@ -2,7 +2,7 @@
 
 import { Link } from "react-router-dom"
 
-function ShowCategories({categories, categoryPictures, setActivePage}) {
+function ShowCategories({categories, categoryPictures }) {
   
     return (
       <div className="categoryPage">

@@ -2,7 +2,7 @@
 
 import { Link } from "react-router-dom"
 
-function ContactInfo({setActivePage}) {
+function ContactInfo() {
   
     return (
       <div>

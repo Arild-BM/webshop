@@ -45,6 +45,7 @@
   cursor: pointer;
 }
 
+/* "+" and "-" buttons for changing number of items i shopping basket */
 .changeNbrOfItems {
   width: 12px;
   height: 12px;
@@ -66,6 +67,7 @@
   outline: 1px black solid;
 }
 
+/* The number of items in shopping basket */
 .nbrOfItems {
   width: 12px;
 }
@@ -86,9 +88,6 @@ a, a:focus, a:hover, a:visited, a:link, a:active {
   text-decoration: none;
   outline: none;
 }
-
-/* &:focus, &:hover, &:visited, &:link, &:active {
-  text-decoration: none; */
 
 /* Main window for catagories and a spesific category */
 .categoryPage {
@@ -239,14 +238,12 @@ a, a:focus, a:hover, a:visited, a:link, a:active {
 /* Line with total sum in shopping basket */
 .totalName {
   width: calc(178px + 32%);
-  /* border: red 2px solid; */
 }
 
 /* Item price in checkout and shopping basket pages */
 .itemPrice {
   width: 50px;
   text-align: end;
-  /* border: red 2px solid; */
 }
 
 
