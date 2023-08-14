@@ -139,6 +139,12 @@ useEffect(() => {
               <Route path="/products/:id/image"
                 element={<ViewPicture/>}
               />
+              <Route path={"*"}
+                element = {<ShowCategories
+                  categories = {categories}
+                  categoryPictures = {categoryPictures}
+                />}
+              />
             </Routes>
           </main>
         </div>
