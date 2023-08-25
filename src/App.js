@@ -55,6 +55,8 @@ function App() {
     }, []
   )
 
+console.log("TEST")
+
 // Get all products from API
 useEffect(() => {
   async function getAllProducts() {
