@@ -221,7 +221,7 @@ a, a:focus, a:hover, a:visited, a:link, a:active {
 
 /* Name of item in shopping basket */
 .itemName {
-  width: 32%;
+  width: 65%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -237,7 +237,7 @@ a, a:focus, a:hover, a:visited, a:link, a:active {
 
 /* Line with total sum in shopping basket */
 .totalName {
-  width: calc(178px + 32%);
+  width: calc(178px + 65%);
 }
 
 /* Item price in checkout and shopping basket pages */
@@ -280,7 +280,19 @@ a, a:focus, a:hover, a:visited, a:link, a:active {
 }
 
 /* Changes for small screen */
-@media (max-width: 500px) {
+@media (max-width: 580px) {
+  .basketLine {
+    justify-content: center;
+  }
+  
+  .itemName {
+    width: 35%;
+  }
+
+  .totalName {
+    width: calc(178px + 35%);
+  }
+
   .button-line {
     flex-direction: column;
   }   
@@ -295,5 +307,19 @@ a, a:focus, a:hover, a:visited, a:link, a:active {
 
   .buttonLength2 {
     margin: 20px auto;
+  }
+}
+
+@media (max-width: 400px) {
+  .basketLine {
+    gap: 10px;
+  }
+  
+  .totalName {
+    width: calc(230px);
+  }
+
+  .itemName {
+    width: 100px;
   }
 }
